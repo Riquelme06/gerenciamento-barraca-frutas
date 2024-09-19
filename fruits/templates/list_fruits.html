@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Lista de Frutas</title>
+</head>
+
+<body>
+    <div class="container mt-4">  
+       
+        <h1 class="text-center mb-4">Frutas Disponíveis:</h1>
+
+      
+        <table border="1" class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Classificação</th>
+                    <th>Fresca</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fruit in fruits %}
+                <tr>
+                    <td>{{ fruit.name }}</td>
+                    <td>{{ fruit.get_category_display }}</td>
+                    <td>{{ fruit.fresh_fruit|yesno:"Sim,Não" }}</td>
+                    <td>{{ fruit.quant }}</td>
+                    <td>{{ fruit.value }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'sales' %}" class="btn btn-primary mb-3">Vendas</a>
+    </div>
+</body>
+
+</html>
